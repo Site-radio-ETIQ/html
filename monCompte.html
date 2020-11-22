@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La voix de renard | Mon compte</title>
+        <link rel="stylesheet" href="../css/cssGen.css">
+        <link rel="shortcut icon" href="../img/icone.ico" type="image/x-icon">
+    </head>
+
+    <body>
+        <header class="bandeau">
+            <nav>
+                <img id="logoETIQ" src="../img/LogoAnimateurETIQ.png" alt="Le logo de l'Etiq">
+                    
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="podcasts.html">Podcasts</a></li>
+                    <li><a href="questionForm.html">Questions</a></li>
+                    <li><a href="monCompte.html">Mon compte</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1>Mon compte</h1>
+
+        <section class="account">
+            <h2>Nom Prénom</h2>
+            <h3>pseudo</h3>
+
+            <p>
+                email: azerty@gmail.com
+            </p>
+
+            <form action="mailto:" method="POST" class="editAccountForm">
+                <fieldset> <legend>Modifier mes informations</legend>
+                    <p>
+                        <label for="nomIndividu">Nom: </label>
+                        <input type="text" id="nomIndividu" name="nom">
+                    </p>
+
+                    <p>
+                        <label for="nomIndividu">Prénom: </label>
+                        <input type="text" id="prenomIndividu" name="prenom">
+                    </p>
+
+                    <p>
+                        <label for="pseudoAbonne">Pseudo: </label>
+                        <input type="text" id="pseudoAbonne" name="pseudo">
+                    </p>
+
+                    <p>
+                        <label for="emailIndividu">Adresse e-mail: </label>
+                        <input type="text" id="emailIndividu" name="email">
+                    </p>
+
+                    <p>
+                        <label for="mdpAbonne">Mot de passe: </label>
+                        <input type="password" id="mdpAbonne" name="mdp">
+                    </p>
+
+                    <p>
+                        <input type="submit" id="submit" name="submit" value="Enregistrer les modifications">
+                    </p>
+
+                </fieldset>
+            </form>
+        </section>
+        
+        <footer class="footer">
+            <nav>
+                <p><a href="mentionsLegales.html">Mentions légales</a></p>
+                <p><a href="politiqueConfid.html">Politique de confidentialité</a></p>
+            </nav>
+        </footer>
+    </body>
+</html>

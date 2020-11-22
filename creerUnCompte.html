@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La voix de renard | Créer un compte</title>
+        <link rel="stylesheet" href="../css/cssGen.css">
+        <link rel="shortcut icon" href="../img/icone.ico" type="image/x-icon">
+    </head>
+
+    <body>
+            <form action="mailto:contact@iut.fr" method="POST" class="formInscri">
+                <fieldset> <legend>S'inscrire</legend>
+                    <p>
+                        <label for="nomIndividu">Nom:<span class="requis">*</span> </label>
+                        <input type="text" id="nomIndividu" name="nom" required>
+                    </p>
+
+                    <p>
+                        <label for="nomIndividu">Prénom:<span class="requis">*</span> </label>
+                        <input type="text" id="prenomIndividu" name="prenom" required>
+                    </p>
+
+                    <p>
+                        <label for="pseudoAbonne">Pseudo:<span class="requis">*</span> </label>
+                        <input type="text" id="pseudoAbonne" name="pseudo" required>
+                    </p>
+
+                    <p>
+                        <label for="emailIndividu">Adresse e-mail:<span class="requis">*</span> </label>
+                        <input type="text" id="emailIndividu" name="email" required>
+                    </p>
+
+                    <p>
+                        <label for="mdpAbonne">Mot de passe:<span class="requis">*</span> </label>
+                        <input type="password" id="mdpAbonne" name="mdp" required>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="politConfid" name="politiqueDeConfidentialite" required>
+                        <label for="politConfid">En cochant cette case, vous acceptez notre <a href="politiqueConfid.html" target="blank">politique de confidentialité</a></label>              
+                    </p>
+
+                    <p>
+                        <input type="submit" id="submit" name="submit" value="Valider">
+                    </p>
+
+                    <p>
+                        Les champs annotés d'un <span class="requis">*</span> sont obligatoires.
+                    </p>
+                </fieldset>
+            </form>
+    </body>
+</html>
