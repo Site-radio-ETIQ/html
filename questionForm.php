@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -15,24 +17,24 @@
                 <img id="logoETIQ" src="../img/LogoAnimateurETIQ.png" alt="Le logo de l'Etiq">
                     
                 <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="podcasts.php">Podcasts</a></li>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="podcasts.html">Podcasts</a></li>
                     <li class="active"><a href="questionForm.html">Questions</a></li>
                     <li><a href="monCompte.html">Mon compte</a></li>
                     <li><a href="connexion.html">Se connecter</a></li>
                 </ul>
             </nav>
         </header>
-
-        <form action="" method="POST" class="questionForm">
+        
+        <form action="controller.php" method="POST" class="questionForm">
             <fieldset> <legend>Posez nous vos questions ici</legend>
                 <p>
-                    <label for="objetForm">Objet de la quesion/proposition: </label>
-                    <input type="text" id="objetForm" name="objet">
+                    <label for="objetForm">Objet de la question/proposition: </label>
+                    <input type="text" id="objetForm" name="objet"  value=" <?php echo $objetForm; ?> ">
                 </p>
 
                 <p>
-                    <textarea name="contenuForm" id="contenu" placeholder="Écrivez ici le contenu de votre question/proposition"></textarea>
+                    <textarea name="contenuForm" id="contenu" placeholder="Écrivez ici le contenu de votre question/proposition"  value=" <?php echo $contenuForm; ?> "></textarea>
                 </p>
 
                 <p>
@@ -41,7 +43,7 @@
 
                 <p>
                     Vous recevrez un e-mail sur la boîte de votre compte lorsque la question aura été traitée. <br>
-                    Si vous n'avez pas de compte, vous pouvez en créer un ici <button><a href="creerUnCompte.html">Créer un compte</a></button>
+                    Si vous n'avez pas de compte, vous pouvez en créer un ici: <a href="creerUnCompte.html">Créer un compte</a>
                 </p>
             </fieldset>
         </form>
