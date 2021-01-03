@@ -1,3 +1,4 @@
+  
 <?php
   // Vérifie qu'il provient d'un formulaire
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -6,15 +7,15 @@
     $host = "localhost";
     $username = "root";
     $password = "";
-    $database = "questions";
+    $database = "radiovoixdurenard";
     
-    $objet = $_POST["objet"]; 
+    $objet = $_POST["objetForm"];
     $contenuForm = $_POST["contenuForm"];
     // Verifie si la session utilisateur est bien active  
-    if(isset($_SESSION['abonne']) AND !empty($_SESSION['abonne'])) {
-		if(isset($plxMotor->aUsers[$_SESSION['abone']]['nomindividu'])) {
+    if(isset($_SESSION['personne']) AND !empty($_SESSION['personne'])) {
+		if(isset($plxMotor->aUsers[$_SESSION['personne']]['nomindividu'])) {
     
-        $nomindividu = $plxMotor->aUsers[$_SESSION['abonne']]['nomindividu']; //$nomindividu prend la valeurs du nom du compte de la session en cours
+        $nomindividu = $plxMotor->aUsers[$_SESSION['personne']]['nomindividu']; //$nomindividu prend la valeurs du nom du compte de la session en cours
         
 
     if (!isset($objet)){
@@ -33,7 +34,7 @@
     }  
     
     //préparer la requête d'insertion SQL
-    $statement = $mysqli->prepare("INSERT INTO questions (objetForm, contenuForm, nomform) VALUES(?, ?, ?)");  
+    $statement = $mysqli->prepare("INSERT INTO formulaire (objetForm, contenuForm, nomform) VALUES(?, ?, ?)");  
     //Associer les valeurs et exécuter la requête d'insertion
     $statement->bind_param('ss', $objet, $contenuForm, $nomindividu); 
     
@@ -46,6 +47,6 @@
             
     }
     }
-      else{ print "Vous devez creer un compte " ;} // si la session n'a pas été trouvé 
+      else{ print "Vous devez creer un compte ou vous connecter." ;} // si la session n'a pas été trouvé 
   }
 ?>
