@@ -1,4 +1,18 @@
+<?php 
+session_start();
 
+//connexion à la base de données:
+$BDD = array();
+$BDD['host'] = "localhost";
+$BDD['user'] = "root";
+$BDD['pass'] = "";
+$BDD['db'] = "radiovoixdurenard";
+$mysqli = mysqli_connect($BDD['host'], $BDD['user'], $BDD['pass'], $BDD['db']);
+if(!$mysqli) {
+    echo "Connexion non établie.";
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 
@@ -17,11 +31,11 @@
                 <img id="logoETIQ" src="../img/LogoAnimateurETIQ.png" alt="Le logo de l'Etiq">
                     
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="podcasts.html">Podcasts</a></li>
-                    <li class="active"><a href="questionForm.html">Questions</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="podcasts.php">Podcasts</a></li>
+                    <li class="active"><a href="questionForm.php">Questions</a></li>
                     <li><a href="monCompte.html">Mon compte</a></li>
-                    <li><a href="connexion.html">Se connecter</a></li>
+                    <li><a href="connexion.php">Se connecter</a></li>
                 </ul>
             </nav>
         </header>
@@ -30,11 +44,11 @@
             <fieldset> <legend>Posez nous vos questions ici</legend>
                 <p>
                     <label for="objetForm">Objet de la question/proposition: </label>
-                    <input type="text" id="objetForm" name="objet"  value=" <?php echo $objetForm; ?> ">
+                    <input type="text" id="objetForm" name="objet"  value=" <?php $_POST["objetForm"]; ?> ">
                 </p>
 
                 <p>
-                    <textarea name="contenuForm" id="contenu" placeholder="Écrivez ici le contenu de votre question/proposition"  value=" <?php echo $contenuForm; ?> "></textarea>
+                    <textarea name="contenuForm" id="contenu" placeholder="Écrivez ici le contenu de votre question/proposition"  value=" <?php $_POST["contenuForm"]; ?> "></textarea>
                 </p>
 
                 <p>
@@ -56,9 +70,5 @@
                 </ul>
             </nav>
         </footer>
-
-        <script>
-            alert("Seule la version statique de cette page est terminée!");
-        </script>
     </body>
 </html>
