@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -17,9 +18,9 @@
                 <ul>
                     <li class="active"><a href="index.php">Accueil</a></li>
                     <li><a href="podcasts.php">Podcasts</a></li>
-                    <li><a href="questionForm.html">Questions</a></li>
+                    <li><a href="questionForm.php">Questions</a></li>
                     <li><a href="monCompte.html">Mon compte</a></li>
-                    <li><a href="connexion.html">Se connecter</a></li>
+                    <li><a href="connexion.php">Se connecter</a></li>
                 </ul>
             </nav>
         </header>
@@ -39,7 +40,7 @@
         <?php
         try
         {
-            $bdd = new PDO('mysql:host=localhost;dbname=voixdurenard;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;dbname=radiovoixdurenard;charset=utf8', 'root', '');
         }
         catch(Exception $e)
         {
@@ -47,7 +48,7 @@
         }
 
 
-        $reponse = $bdd->query('SELECT * FROM podcasts ORDER BY datePodcast DESC');
+        $reponse = $bdd->query('SELECT * FROM podcast ORDER BY datePodcast DESC LIMIT 5');
 
         while ($donnees = $reponse->fetch())
         {
@@ -56,7 +57,7 @@
             <img src="<?php echo $donnees['imgPodcast']; ?>" alt="Miniature du podcast" class="miniaturePodcast" width="25%">   
             
             <article class="podDeux">
-                <h2 class="titrePodcast"><a href="<?php echo $donnees['lienPage']; ?>"><?php echo $donnees['titrePodcast']; ?></a></h2>
+                <h2 class="titrePodcast"><a href='pod.php?ID=<?php echo $donnees['idPodcast']; ?>'><?php echo $donnees['titrePodcast']; ?></a></h2>
                 <p class="detailPodcast"><?php echo $donnees['datePodcast']; ?> | <?php echo $donnees['descPodcast']; ?></p>
             </article>
             </section>
@@ -78,9 +79,5 @@
                 </ul>
             </nav>
         </footer>
-
-        <script>
-            alert("Cette page est une maquette statique de la version finale de la page!");
-        </script>
     </body>
 </html>
