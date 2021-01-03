@@ -1,4 +1,25 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
+
+<?php
+    if (isset($_GET["ID"]) && $_GET["ID"]!=""){
+
+        $lid = $_GET["ID"];
+        
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost;dbname=radiovoixdurenard;charset=utf8', 'root', '');
+        }
+        catch(Exception $e)
+        {
+                die('Erreur : '.$e->getMessage());
+        }
+
+        $requete = $bdd ->query('SELECT * FROM podcast WHERE idPodcast =' . $lid);
+
+    }
+
+?>
 
 <html lang="fr">
     <head>
@@ -17,48 +38,34 @@
                 <ul>
                     <li><a href="index.php">Accueil</a></li>
                     <li class="active"><a href="podcasts.php">Podcasts</a></li>
-                    <li><a href="questionForm.html">Questions</a></li>
+                    <li><a href="questionForm.php">Questions</a></li>
                     <li><a href="monCompte.html">Mon compte</a></li>
-                    <li><a href="connexion.html">Se connecter</a></li>
+                    <li><a href="connexion.php">Se connecter</a></li>
                 </ul>
             </nav>
         </header>
 
         <?php
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;dbname=voixdurenard;charset=utf8', 'root', '');
-        }
-        catch(Exception $e)
-        {
-                die('Erreur : '.$e->getMessage());
-        }
-
-
-        $reponse = $bdd->query('SELECT * FROM podcasts');
-
-        while ($donnees = $reponse->fetch())
-        {
+            while ($donnees = $requete->fetch())
+            {
         ?>
-        <section id="unitPodcast">
-            <iframe width="560" height="315" src="<?php echo $donnees['lienYT']; ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div id="unitPodcast">
+                <iframe class="cadreVideo" width="560" height="315" src="<?php echo $donnees['lienYT']; ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p><?php echo $donnees['descPodcast']; ?></p>  
+                <p><?php echo $donnees['nbLikes']; ?> <button>Ajouter à mes favoris</button></p>                           
 
+                <form class="postCommentaire" action="" method="POST">
+                    <input type="text" placeholder="Commentaire" required>
+                    <input type="submit" value="Poster">
+                    <hr>
 
-            <p class="infosPodcast">
-                <div><?php echo $donnees['titrePodcast']; ?></div>
-                <div><?php echo $donnees['presentateur']; ?></div>
-                <div><?php echo $donnees['nbLikes']; ?>  Likes</div>
-                <div><?php echo $donnees['nbEcoutes']; ?> Vues</div>
-                <div><?php echo $donnees['descPodcast']; ?></div>   
-                <div><?php echo $donnees['nbCommentaires']; ?> Commentaires</div>      
-            </p>
-        </section>
+                </form>
+            </div>
 
-        <?php
-        }
+         <?php
 
-        $reponse->closeCursor(); 
-
+            }         
+            $requete->closeCursor();
         ?>
 
     
