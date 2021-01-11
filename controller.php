@@ -7,7 +7,7 @@
     $host = "localhost";
     $username = "root";
     $password = "";
-    $database = "questions";
+    $database = "radiovoixdurenard";        //base de donnée du site
     
     $objet = $_POST["objet"]; 
     $contenuForm = $_POST["contenuForm"];
