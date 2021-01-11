@@ -11,8 +11,8 @@
     
     $objet = $_POST["objet"]; 
     $contenuForm = $_POST["contenuForm"];
-    $nomForm = $_SESSION["nomcompte"];      // nomform qui sera utilisé pour l'inserssion prend la valeurs du nomdu compte de la session en cours
-    $emailForm = $_SESSION["mailcompte"];
+    $nomForm = $_SESSION["nomIndividu"];      // nomform qui sera utilisé pour l'inserssion prend la valeurs du nom du compte de la session en cours
+    $emailForm = $_SESSION["emailIndividu"];
 
     if(!isset($_SESSION['nomcompte'])){                 // verification : si pas de session en cours alors ce message
     print "Connectez vous pour envoyer un message";
@@ -36,8 +36,7 @@
     }  
     
     //préparer la requête d'insertion SQL
-    $statement = $mysqli->prepare("INSERT INTO questions (objetForm, contenuForm, nomForm, emailForm) VALUES(?, ?, ?, ?)"); 
- //     $statement = $mysqli->prepare("INSERT INTO questions (nomForm, emailForm) SELECT nomindividu, mailindividu FROM abonne"); 
+    $statement = $mysqli->prepare("INSERT INTO formulaire (objetForm, contenuForm, nomForm, emailForm) VALUES(?, ?, ?, ?)"); 
     //Associer les valeurs et exécuter la requête d'insertion
     $statement->bind_param('ssss', $objet, $contenuForm, $nomForm, $emailForm); 
     
